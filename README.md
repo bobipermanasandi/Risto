@@ -1,5 +1,7 @@
 # Risto 🎬
 
+<img src="capture/cover.png" alt="Search" width="300"/><br />
+
 [![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md) [![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md)
 
 Risto adalah aplikasi katalog film dan serial TV yang dikembangkan menggunakan Flutter. Aplikasi ini memungkinkan pengguna untuk menjelajahi, mencari, dan mengelola daftar tontonan film dan serial TV favorit mereka.

@@ -1,5 +1,7 @@
 # Risto 🎬
 
+<img src="capture/cover.png" alt="Search" width="300"/><br />
+
 [![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md) [![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md)
 
 Risto is a movie and TV series catalog application built with Flutter. This application allows users to explore, search, and manage their favorite movies and TV series watchlist.
@@ -39,16 +41,16 @@ Risto is a movie and TV series catalog application built with Flutter. This appl
 ### Movie/TV Series Detail
 <img src="capture/02. detail.png" alt="Movie/TV Series Detail" width="300"/>
 
-### Popular Movies
+### Popular Movie/TV Series
 <img src="capture/03. popular.png" alt="Popular Movies" width="300"/>
 
-### Watchlist
+### Watchlist Movie/TV Series
 <img src="capture/04. watchlist.png" alt="Watchlist" width="300"/>
 
 ### Menu/Drawer
 <img src="capture/05. menu.png" alt="Menu/Drawer" width="300"/>
 
-### Search
+### Search Movie/TV Series
 <img src="capture/06. search.png" alt="Search" width="300"/>
 
 ### About
