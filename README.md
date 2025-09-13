@@ -1,6 +1,6 @@
-# Risto 🎬
+# Risto
 
-<img src="capture/cover.png" alt="Search" width="300"/><br />
+<img src="capture/cover.png"/><br />
 
 [![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md) [![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md)
 
