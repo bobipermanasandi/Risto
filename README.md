@@ -52,41 +52,6 @@ lib/
 └── injection.dart   # Dependency injection
 ```
 
-## 🛠️ Teknologi yang Digunakan
-
-### Core Framework
-- **Flutter** ^3.9.2 - Framework UI utama
-- **Dart** - Bahasa pemrograman
-
-### State Management
-- **Provider** ^6.1.5+1 - State management pattern
-
-### Network & API
-- **HTTP** ^1.5.0 - HTTP client untuk API calls
-- **The Movie Database (TMDB) API** - Sumber data film dan serial TV
-
-### Local Storage
-- **SQLite** (via sqflite ^2.4.2) - Database lokal untuk watchlist
-- **Path Provider** ^2.1.5 - Akses direktori sistem
-
-### UI & Styling
-- **Google Fonts** ^6.3.1 - Custom fonts (Poppins)
-- **Flutter Rating Bar** ^4.0.1 - Widget rating
-- **Cached Network Image** ^3.4.1 - Optimasi loading gambar
-
-### Dependency Injection
-- **Get It** ^8.2.0 - Service locator pattern
-
-### Functional Programming
-- **Dartz** ^0.10.1 - Functional programming utilities
-- **Equatable** ^2.0.7 - Value equality
-
-### Testing
-- **Flutter Test** - Unit testing
-- **Mockito** ^5.5.1 - Mock objects untuk testing
-- **Integration Test** - Widget testing
-- **Build Runner** ^2.8.0 - Code generation
-
 ## 🚀 Cara Menjalankan Aplikasi
 
 ### Prasyarat
@@ -99,7 +64,7 @@ lib/
 
 1. **Clone repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/bobipermanasandi/Risto.git
    cd risto
    ```
 
@@ -108,9 +73,9 @@ lib/
    flutter pub get
    ```
 
-3. **Generate mock files (untuk testing)**
+3. **Generate mock files**
    ```bash
-   flutter packages pub run build_runner build
+   dart run build_runner build --delete-conflicting-outputs
    ```
 
 4. **Run aplikasi**
@@ -132,12 +97,15 @@ flutter test integration_test/
 
 # Test dengan coverage
 flutter test --coverage
+
+# Generate ke HTML
+genhtml coverage/lcov.info -o coverage/html
 ```
 
 ### Coverage Report
 Setelah menjalankan test dengan coverage, buka file HTML di:
-```
-coverage/html/index.html
+```bash
+open coverage/html/index.html
 ```
 
 ### Struktur Testing
