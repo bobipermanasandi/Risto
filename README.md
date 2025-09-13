@@ -1,10 +1,8 @@
 # Risto 🎬
 
+[![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md) [![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md)
+
 Risto adalah aplikasi katalog film dan serial TV yang dikembangkan menggunakan Flutter. Aplikasi ini memungkinkan pengguna untuk menjelajahi, mencari, dan mengelola daftar tontonan film dan serial TV favorit mereka.
-
-## 📱 Tentang Aplikasi
-
-Risto merupakan contoh proyek aplikasi untuk pembelajaran Flutter Developer Expert yang dibuat oleh CodeSynesia. Aplikasi ini menggunakan arsitektur Clean Architecture dengan pattern Repository dan Provider untuk state management.
 
 ## ✨ Fitur Utama
 
@@ -113,19 +111,9 @@ open coverage/html/index.html
 - **Widget Tests** - Testing untuk UI components dan pages
 - **Integration Tests** - Testing untuk alur aplikasi secara keseluruhan
 
-## 📱 Platform Support
-
-Aplikasi mendukung multiple platforms:
-- ✅ **Android**
-- ✅ **iOS** 
-- ✅ **Web**
-- ✅ **Windows**
-- ✅ **macOS**
-- ✅ **Linux**
-
 ## 🔧 Konfigurasi API
 
-Aplikasi menggunakan The Movie Database (TMDB) API. API key sudah dikonfigurasi di:
+Aplikasi menggunakan The Movie Database (TMDB) API :
 ```dart
 // lib/common/constants.dart
 const String apiKey = 'api_key=xxxxxxxx';
@@ -183,13 +171,6 @@ lib/
 ## 📄 License
 
 Proyek ini dibuat untuk tujuan pembelajaran dan demonstrasi Clean Architecture dengan Flutter.
-
-## 👥 Credits
-
-- **CodeSynesia** - Original project concept
-- **The Movie Database (TMDB)** - Movie and TV series data
-- **Flutter Team** - Flutter framework
-- **Community** - Various Flutter packages contributors
 
 ---
 
