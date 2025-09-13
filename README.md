@@ -30,6 +30,9 @@ Risto adalah aplikasi katalog film dan serial TV yang dikembangkan menggunakan F
 
 ## 📱 Screenshots
 
+<details>
+<summary>Klik untuk melihat screenshot aplikasi</summary>
+
 ### Movie & TV Series List
 <img src="capture/01. list.png" alt="Movie and TV Series List" width="300"/>
 
@@ -50,6 +53,8 @@ Risto adalah aplikasi katalog film dan serial TV yang dikembangkan menggunakan F
 
 ### About
 <img src="capture/07. about.png" alt="About" width="300"/>
+
+</details>
 
 ## 🏗️ Arsitektur
 
