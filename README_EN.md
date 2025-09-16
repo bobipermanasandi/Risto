@@ -213,6 +213,3 @@ lib/
 
 This project is created for educational purposes and to demonstrate Clean Architecture with Flutter.
 
----
-
-**Note**: This application is created as a learning example for Flutter Developer Expert and uses data from The Movie Database (TMDB) API.

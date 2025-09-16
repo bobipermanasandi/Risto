@@ -201,7 +201,3 @@ lib/
 ## 📄 License
 
 Proyek ini dibuat untuk tujuan pembelajaran dan demonstrasi Clean Architecture dengan Flutter.
-
----
-
-**Note**: Aplikasi ini dibuat sebagai contoh pembelajaran Flutter Developer Expert dan menggunakan data dari The Movie Database (TMDB) API.
