@@ -1,8 +1,8 @@
-import 'package:risto/data/models/tv_series/tv_series_table.dart';
-import 'package:risto/domain/entities/genre.dart';
-import 'package:risto/domain/entities/season.dart';
-import 'package:risto/domain/entities/tv_series/tv_series.dart';
-import 'package:risto/domain/entities/tv_series/tv_series_detail.dart';
+import 'package:core/data/models/tv_series/tv_series_table.dart';
+import 'package:core/domain/entities/genre.dart';
+import 'package:core/domain/entities/season.dart';
+import 'package:core/domain/entities/tv_series/tv_series.dart';
+import 'package:core/domain/entities/tv_series/tv_series_detail.dart';
 
 final testTvSerives = TvSeries(
   backdropPath: "/8cyB9YCbV5CfOyZUUjg2e8U9s1R.jpg",

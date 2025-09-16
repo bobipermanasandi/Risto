@@ -1,33 +1,32 @@
-import 'package:risto/common/constants.dart';
-import 'package:risto/common/utils.dart';
-import 'package:risto/presentation/pages/about_page.dart';
-import 'package:risto/presentation/pages/home_page.dart';
-import 'package:risto/presentation/pages/movie/movie_detail_page.dart';
-import 'package:risto/presentation/pages/movie/popular_movies_page.dart';
-import 'package:risto/presentation/pages/movie/search_movie_page.dart';
-import 'package:risto/presentation/pages/movie/top_rated_movies_page.dart';
-import 'package:risto/presentation/pages/movie/watchlist_movies_page.dart';
-import 'package:risto/presentation/pages/tv_series/popular_tv_series_page.dart';
-import 'package:risto/presentation/pages/tv_series/search_tv_series_page.dart';
-import 'package:risto/presentation/pages/tv_series/top_rated_tv_series_page.dart';
-import 'package:risto/presentation/pages/tv_series/tv_series_detail_page.dart';
-import 'package:risto/presentation/pages/tv_series/watchlist_tv_series_page.dart';
-import 'package:risto/presentation/provider/movie/movie_detail_notifier.dart';
-import 'package:risto/presentation/provider/movie/movie_list_notifier.dart';
-import 'package:risto/presentation/provider/movie/movie_search_notifier.dart';
-import 'package:risto/presentation/provider/movie/popular_movies_notifier.dart';
-import 'package:risto/presentation/provider/movie/top_rated_movies_notifier.dart';
-import 'package:risto/presentation/provider/movie/watchlist_movie_notifier.dart';
+import 'package:about/about.dart';
+import 'package:core/core.dart';
+import 'package:core/presentation/pages/home_page.dart';
+import 'package:core/presentation/pages/movie/movie_detail_page.dart';
+import 'package:core/presentation/pages/movie/popular_movies_page.dart';
+import 'package:core/presentation/pages/movie/search_movie_page.dart';
+import 'package:core/presentation/pages/movie/top_rated_movies_page.dart';
+import 'package:core/presentation/pages/movie/watchlist_movies_page.dart';
+import 'package:core/presentation/pages/tv_series/popular_tv_series_page.dart';
+import 'package:core/presentation/pages/tv_series/search_tv_series_page.dart';
+import 'package:core/presentation/pages/tv_series/top_rated_tv_series_page.dart';
+import 'package:core/presentation/pages/tv_series/tv_series_detail_page.dart';
+import 'package:core/presentation/pages/tv_series/watchlist_tv_series_page.dart';
+import 'package:core/presentation/provider/movie/movie_detail_notifier.dart';
+import 'package:core/presentation/provider/movie/movie_list_notifier.dart';
+import 'package:core/presentation/provider/movie/movie_search_notifier.dart';
+import 'package:core/presentation/provider/movie/popular_movies_notifier.dart';
+import 'package:core/presentation/provider/movie/top_rated_movies_notifier.dart';
+import 'package:core/presentation/provider/movie/watchlist_movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:risto/injection.dart' as di;
-import 'package:risto/presentation/provider/tv_series/popular_tv_series_notifier.dart';
-import 'package:risto/presentation/provider/tv_series/top_rated_tv_series_notifier.dart';
-import 'package:risto/presentation/provider/tv_series/tv_series_detail_notifier.dart';
-import 'package:risto/presentation/provider/tv_series/tv_series_list_notifier.dart';
-import 'package:risto/presentation/provider/tv_series/tv_series_search_notifier.dart';
-import 'package:risto/presentation/provider/tv_series/watchlist_tv_series_notifier.dart';
+import 'package:core/presentation/provider/tv_series/popular_tv_series_notifier.dart';
+import 'package:core/presentation/provider/tv_series/top_rated_tv_series_notifier.dart';
+import 'package:core/presentation/provider/tv_series/tv_series_detail_notifier.dart';
+import 'package:core/presentation/provider/tv_series/tv_series_list_notifier.dart';
+import 'package:core/presentation/provider/tv_series/tv_series_search_notifier.dart';
+import 'package:core/presentation/provider/tv_series/watchlist_tv_series_notifier.dart';
 
 void main() {
   di.init();
@@ -92,42 +91,41 @@ class MyApp extends StatelessWidget {
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
-            case '/home':
+            case homeRoute:
               return MaterialPageRoute(builder: (_) => HomePage());
-
-            case AboutPage.routeName:
+            case aboutRoute:
               return MaterialPageRoute(builder: (_) => AboutPage());
 
             /// MOVIE
-            case PopularMoviesPage.routeName:
+            case popularMovieRoute:
               return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
-            case TopRatedMoviesPage.routeName:
+            case topRatedMovieRoute:
               return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
-            case MovieDetailPage.routeName:
+            case detailMovieRoute:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
-            case SearchMoviePage.routeName:
+            case searchMovieRoute:
               return CupertinoPageRoute(builder: (_) => SearchMoviePage());
-            case WatchlistMoviesPage.routeName:
+            case watchListMovieRoute:
               return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
 
             /// TV SERIES
-            case PopularTvSeriesPage.routeName:
+            case popularTvSeriesRoute:
               return CupertinoPageRoute(builder: (_) => PopularTvSeriesPage());
-            case TopRatedTvSeriesPage.routeName:
+            case topRatedTvSeriesRoute:
               return CupertinoPageRoute(builder: (_) => TopRatedTvSeriesPage());
-            case TvSeriesDetailPage.routeName:
+            case detailTvSeriesRoute:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => TvSeriesDetailPage(id: id),
                 settings: settings,
               );
-            case SearchTvSeriesPage.routeName:
+            case searchTvSeriesRoute:
               return CupertinoPageRoute(builder: (_) => SearchTvSeriesPage());
-            case WatchlistTvSeriesPage.routeName:
+            case watchListTvSeriesRoute:
               return MaterialPageRoute(builder: (_) => WatchlistTvSeriesPage());
 
             default:

@@ -1,7 +1,7 @@
-import 'package:risto/data/models/movie/movie_table.dart';
-import 'package:risto/domain/entities/genre.dart';
-import 'package:risto/domain/entities/movie/movie.dart';
-import 'package:risto/domain/entities/movie/movie_detail.dart';
+import 'package:core/data/models/movie/movie_table.dart';
+import 'package:core/domain/entities/genre.dart';
+import 'package:core/domain/entities/movie/movie.dart';
+import 'package:core/domain/entities/movie/movie_detail.dart';
 
 final testMovie = Movie(
   adult: false,

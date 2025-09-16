@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:risto/main.dart' as app;
 import 'package:integration_test/integration_test.dart';
-import 'package:risto/presentation/widgets/movie_card.dart';
-import 'package:risto/presentation/widgets/tv_series_card.dart';
+import 'package:core/presentation/widgets/movie_card.dart';
+import 'package:core/presentation/widgets/tv_series_card.dart';
 
 void main() {
   group('Testing Risto App', () {
