@@ -4,7 +4,15 @@
 
 [![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md)[![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md) 
 
-Risto is a movie and TV series catalog application built with Flutter. This application allows users to explore, search, and manage their favorite movies and TV series watchlist.
+**Risto** is a movie and TV series catalog application built with Flutter. It offers a clean and responsive user interface that allows users to:
+
+- Explore a wide range of movies and TV shows across different genres
+
+- Quickly search for their favorite titles
+
+- Save and manage a personalized watchlist
+
+Designed to deliver a seamless user experience, **Risto** is perfect for anyone looking to stay organized with their entertainment. This project can also serve as a reference for Flutter developers interested in learning about modern app architecture, state management, and efficient API integration.
 
 ## ✨ Key Features
 
