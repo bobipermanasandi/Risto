@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:core/domain/entities/tv_series/tv_series.dart';
-import 'package:core/domain/usecases/tv_series/search_tv_series.dart';
-import 'package:core/presentation/provider/tv_series/tv_series_search_notifier.dart';
+import 'package:search/domain/usecases/tv_series/search_tv_series.dart';
+import 'package:search/presentation/provider/tv_series/tv_series_search_notifier.dart';
 
 import '../../../../../test/dummy_data/tv_series/dummy_objects.dart';
 import 'tv_series_search_notifier_test.mocks.dart';

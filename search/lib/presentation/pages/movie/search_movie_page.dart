@@ -1,17 +1,17 @@
-import '../../../common/constants.dart';
-import '../../../common/state_enum.dart';
-import 'package:core/presentation/provider/tv_series/tv_series_search_notifier.dart';
+import 'package:core/core.dart';
+
+import '../../provider/movie/movie_search_notifier.dart';
+import 'package:core/presentation/widgets/movie_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:core/presentation/widgets/tv_series_card.dart';
 
-class SearchTvSeriesPage extends StatelessWidget {
-  const SearchTvSeriesPage({super.key});
+class SearchMoviePage extends StatelessWidget {
+  const SearchMoviePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Search Tv Series')),
+      appBar: AppBar(title: Text('Search Movie')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -19,13 +19,13 @@ class SearchTvSeriesPage extends StatelessWidget {
           children: [
             TextField(
               onSubmitted: (query) {
-                Provider.of<TvSeriesSearchNotifier>(
+                Provider.of<MovieSearchNotifier>(
                   context,
                   listen: false,
-                ).fetchTvSeriesSearch(query);
+                ).fetchMovieSearch(query);
               },
               decoration: InputDecoration(
-                hintText: 'Search title Tv Series',
+                hintText: 'Search title Movie',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
               ),
@@ -33,7 +33,7 @@ class SearchTvSeriesPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text('Search Result', style: kHeading6),
-            Consumer<TvSeriesSearchNotifier>(
+            Consumer<MovieSearchNotifier>(
               builder: (context, data, child) {
                 if (data.state == RequestState.loading) {
                   return Center(child: CircularProgressIndicator());
@@ -69,8 +69,8 @@ class SearchTvSeriesPage extends StatelessWidget {
                     child: ListView.builder(
                       padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {
-                        final tv = data.searchResult[index];
-                        return TvSeriesCard(tvSeries: tv);
+                        final movie = data.searchResult[index];
+                        return MovieCard(movie: movie);
                       },
                       itemCount: result.length,
                     ),
