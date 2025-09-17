@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:core/presentation/pages/movie/movie_list_page.dart';
 import 'package:core/presentation/pages/tv_series/tv_series_list_page.dart';
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
+              FirebaseCrashlytics.instance.crash();
               (_selectedIndex == 0)
                   ? Navigator.pushNamed(context, searchMovieRoute)
                   : Navigator.pushNamed(context, searchTvSeriesRoute);

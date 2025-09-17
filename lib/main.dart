@@ -1,4 +1,5 @@
 import 'package:about/about.dart';
+import 'package:core/common/http_ssl_pinning.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:core/presentation/pages/movie/movie_detail_page.dart';
@@ -14,8 +15,10 @@ import 'package:core/presentation/provider/movie/movie_list_notifier.dart';
 import 'package:core/presentation/provider/movie/popular_movies_notifier.dart';
 import 'package:core/presentation/provider/movie/top_rated_movies_notifier.dart';
 import 'package:core/presentation/provider/movie/watchlist_movie_notifier.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:risto/injection.dart' as di;
 import 'package:core/presentation/provider/tv_series/popular_tv_series_notifier.dart';
@@ -23,12 +26,19 @@ import 'package:core/presentation/provider/tv_series/top_rated_tv_series_notifie
 import 'package:core/presentation/provider/tv_series/tv_series_detail_notifier.dart';
 import 'package:core/presentation/provider/tv_series/tv_series_list_notifier.dart';
 import 'package:core/presentation/provider/tv_series/watchlist_tv_series_notifier.dart';
+import 'package:search/presentation/blocs/movie/search_movie_bloc.dart';
 import 'package:search/presentation/pages/movie/search_movie_page.dart';
 import 'package:search/presentation/pages/tv_series/search_tv_series_page.dart';
-import 'package:search/presentation/provider/movie/movie_search_notifier.dart';
 import 'package:search/presentation/provider/tv_series/tv_series_search_notifier.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HttpSslPinning.init();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   di.init();
   runApp(MyApp());
 }
@@ -45,9 +55,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieDetailNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieSearchNotifier>(),
-        ),
+        BlocProvider(create: (_) => di.locator<SearchMovieBloc>()),
         ChangeNotifierProvider(
           create: (_) => di.locator<TopRatedMoviesNotifier>(),
         ),

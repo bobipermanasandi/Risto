@@ -1,9 +1,9 @@
 import 'package:core/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:search/presentation/blocs/movie/search_movie_bloc.dart';
 
-import '../../provider/movie/movie_search_notifier.dart';
 import 'package:core/presentation/widgets/movie_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SearchMoviePage extends StatelessWidget {
   const SearchMoviePage({super.key});
@@ -18,11 +18,8 @@ class SearchMoviePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
-              onSubmitted: (query) {
-                Provider.of<MovieSearchNotifier>(
-                  context,
-                  listen: false,
-                ).fetchMovieSearch(query);
+              onChanged: (query) {
+                context.read<SearchMovieBloc>().add(OnQueryChanged(query));
               },
               decoration: InputDecoration(
                 hintText: 'Search title Movie',
@@ -33,48 +30,24 @@ class SearchMoviePage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text('Search Result', style: kHeading6),
-            Consumer<MovieSearchNotifier>(
-              builder: (context, data, child) {
-                if (data.state == RequestState.loading) {
+            BlocBuilder<SearchMovieBloc, SearchMovieState>(
+              builder: (context, state) {
+                if (state is SearchMovieLoading) {
                   return Center(child: CircularProgressIndicator());
-                } else if (data.state == RequestState.loaded) {
-                  final result = data.searchResult;
-                  if (result.isEmpty) {
-                    return Center(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 200),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20, bottom: 10),
-                            child: Text(
-                              'No Result',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: Text(
-                              'Sorry, there no results for this search,\n please try another phase',
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
+                } else if (state is SearchMovieHasData) {
+                  final result = state.result;
                   return Expanded(
                     child: ListView.builder(
                       padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {
-                        final movie = data.searchResult[index];
+                        final movie = result[index];
                         return MovieCard(movie: movie);
                       },
                       itemCount: result.length,
                     ),
                   );
+                } else if (state is SearchMovieError) {
+                  return Expanded(child: Center(child: Text(state.message)));
                 } else {
                   return Expanded(child: Container());
                 }

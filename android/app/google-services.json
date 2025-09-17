@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "122227957795",
+    "project_id": "risto-8b6c5",
+    "storage_bucket": "risto-8b6c5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122227957795:android:056a358f1bfb786d3d1196",
+        "android_client_info": {
+          "package_name": "com.codesynesia.risto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBafsA4dY4_Wot1wGRQ-dXFjwmX3EJMHS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
