@@ -2,10 +2,7 @@
 
 <img src="capture/cover.png"/><br />
 
-[![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md) [![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md)
-
-<br />
-[![Codemagic build status](https://api.codemagic.io/apps/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/status_badge.svg)](https://codemagic.io/app/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/latest_build)
+[![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md)[![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md) [![Codemagic build status](https://api.codemagic.io/apps/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/status_badge.svg)]([README_EN.md](https://codemagic.io/app/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/latest_build))
 
 **Risto** adalah aplikasi katalog film dan serial TV yang dibangun dengan Flutter. Dengan antarmuka yang intuitif dan responsif, **Risto** memungkinkan pengguna untuk:
 
