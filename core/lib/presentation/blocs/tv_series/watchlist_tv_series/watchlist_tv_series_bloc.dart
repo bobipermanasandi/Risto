@@ -1,0 +1,35 @@
+import 'package:core/domain/entities/tv_series/tv_series.dart';
+import 'package:core/domain/usecases/tv_series/get_watchlist_tv_series.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:equatable/equatable.dart';
+
+part 'watchlist_tv_series_event.dart';
+part 'watchlist_tv_series_state.dart';
+
+class WatchlistTvSeriesBloc
+    extends Bloc<WatchlistTvSeriesEvent, WatchlistTvSeriesState> {
+  final GetWatchlistTvSeries _getWatchlistTvSeries;
+  WatchlistTvSeriesBloc(this._getWatchlistTvSeries)
+    : super(WatchlistTvSeriesEmpty()) {
+    on<WatchlistTvSeriesEvent>(_onWatchlistTvSeriesEvent);
+  }
+
+  Future<void> _onWatchlistTvSeriesEvent(
+    WatchlistTvSeriesEvent event,
+    Emitter<WatchlistTvSeriesState> emit,
+  ) async {
+    emit(WatchlistTvSeriesLoading());
+
+    final result = await _getWatchlistTvSeries.execute();
+
+    result.fold((failure) => emit(WatchlistTvSeriesError(failure.message)), (
+      data,
+    ) {
+      if (data.isEmpty) {
+        emit(WatchlistTvSeriesEmpty());
+      } else {
+        emit(WatchlistTvSeriesHasData(data));
+      }
+    });
+  }
+}

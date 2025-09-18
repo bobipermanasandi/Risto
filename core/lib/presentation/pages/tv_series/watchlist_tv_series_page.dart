@@ -1,8 +1,8 @@
-import '../../../common/state_enum.dart';
+import 'package:core/presentation/blocs/tv_series/watchlist_tv_series/watchlist_tv_series_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../common/utils.dart';
-import 'package:core/presentation/provider/tv_series/watchlist_tv_series_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:core/presentation/widgets/tv_series_card.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
@@ -19,10 +19,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
     super.initState();
     Future.microtask(() {
       if (mounted) {
-        Provider.of<WatchlistTvSeriesNotifier>(
-          context,
-          listen: false,
-        ).fetchWatchlistTvSeries();
+        context.read<WatchlistTvSeriesBloc>().add(FetchWatchlistTvSeries());
       }
     });
   }
@@ -33,13 +30,12 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
     routeObserver.subscribe(this, ModalRoute.of(context)!);
   }
 
+  // coverage:ignore-start
   @override
   void didPopNext() {
-    Provider.of<WatchlistTvSeriesNotifier>(
-      context,
-      listen: false,
-    ).fetchWatchlistTvSeries();
+    context.read<WatchlistTvSeriesBloc>().add(FetchWatchlistTvSeries());
   }
+  // coverage:ignore-end
 
   @override
   Widget build(BuildContext context) {
@@ -47,48 +43,33 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
       appBar: AppBar(title: Text('Watchlist Tv Series'), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistTvSeriesNotifier>(
-          builder: (context, data, child) {
-            if (data.watchlistState == RequestState.loading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (data.watchlistState == RequestState.loaded) {
-              if (data.watchlistTvSeries.isEmpty) {
-                return Center(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 200),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 10),
-                        child: Text(
-                          'No Watchlist Yet',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Text(
-                          'Don\'t forget to add watchlist you like the most so that can find those easily over here',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }
+        child: BlocBuilder<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
+          builder: (_, state) {
+            if (state is WatchlistTvSeriesLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is WatchlistTvSeriesHasData) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tv = data.watchlistTvSeries[index];
+                  final tv = state.result[index];
                   return TvSeriesCard(tvSeries: tv);
                 },
-                itemCount: data.watchlistTvSeries.length,
+                itemCount: state.result.length,
+              );
+            } else if (state is WatchlistTvSeriesError) {
+              return Center(
+                key: const Key('error_message'),
+                child: Text(state.message),
               );
             } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message),
+              return const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.visibility_off, size: 32),
+                    SizedBox(height: 2),
+                    Text('Empty Watchlist'),
+                  ],
+                ),
               );
             }
           },

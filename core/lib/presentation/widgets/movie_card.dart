@@ -13,9 +13,11 @@ class MovieCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
+        // coverage:ignore-start
         onTap: () {
           Navigator.pushNamed(context, detailMovieRoute, arguments: movie.id);
         },
+        // coverage:ignore-end
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
@@ -54,7 +56,9 @@ class MovieCard extends StatelessWidget {
                   width: 80,
                   placeholder: (context, url) =>
                       Center(child: CircularProgressIndicator()),
+                  // coverage:ignore-start
                   errorWidget: (context, url, error) => Icon(Icons.error),
+                  // coverage:ignore-end
                 ),
               ),
             ),

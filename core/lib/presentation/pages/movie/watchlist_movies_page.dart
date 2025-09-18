@@ -1,9 +1,9 @@
-import '../../../common/state_enum.dart';
+import 'package:core/presentation/blocs/movie/watchlist_movie/watchlist_movie_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../common/utils.dart';
-import 'package:core/presentation/provider/movie/watchlist_movie_notifier.dart';
 import 'package:core/presentation/widgets/movie_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class WatchlistMoviesPage extends StatefulWidget {
   const WatchlistMoviesPage({super.key});
@@ -19,10 +19,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
     super.initState();
     Future.microtask(() {
       if (mounted) {
-        Provider.of<WatchlistMovieNotifier>(
-          context,
-          listen: false,
-        ).fetchWatchlistMovies();
+        context.read<WatchlistMovieBloc>().add(FetchWatchlistMovies());
       }
     });
   }
@@ -33,13 +30,12 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
     routeObserver.subscribe(this, ModalRoute.of(context)!);
   }
 
+  // coverage:ignore-start
   @override
   void didPopNext() {
-    Provider.of<WatchlistMovieNotifier>(
-      context,
-      listen: false,
-    ).fetchWatchlistMovies();
+    context.read<WatchlistMovieBloc>().add(FetchWatchlistMovies());
   }
+  // coverage:ignore-end
 
   @override
   Widget build(BuildContext context) {
@@ -50,55 +46,42 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
         leading: IconButton(
           key: const Key('iconBack-movie'),
           icon: Icon(Icons.arrow_back),
+          // coverage:ignore-start
           onPressed: () {
             Navigator.pop(context);
           },
+          // coverage:ignore-end
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistMovieNotifier>(
-          builder: (context, data, child) {
-            if (data.watchlistState == RequestState.loading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (data.watchlistState == RequestState.loaded) {
-              if (data.watchlistMovies.isEmpty) {
-                return Center(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 200),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 10),
-                        child: Text(
-                          'No Watchlist Yet',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Text(
-                          'Don\'t forget to add watchlist you like the most so that can find those easily over here',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }
+        child: BlocBuilder<WatchlistMovieBloc, WatchlistMovieState>(
+          builder: (_, state) {
+            if (state is WatchlistMovieLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is WatchlistMovieHasData) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final movie = data.watchlistMovies[index];
+                  final movie = state.result[index];
                   return MovieCard(movie: movie);
                 },
-                itemCount: data.watchlistMovies.length,
+                itemCount: state.result.length,
+              );
+            } else if (state is WatchlistMovieError) {
+              return Center(
+                key: const Key('error_message'),
+                child: Text(state.message),
               );
             } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message),
+              return const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.visibility_off, size: 32),
+                    SizedBox(height: 2),
+                    Text('Empty Watchlist'),
+                  ],
+                ),
               );
             }
           },

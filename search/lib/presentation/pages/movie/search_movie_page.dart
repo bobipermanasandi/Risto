@@ -46,8 +46,37 @@ class SearchMoviePage extends StatelessWidget {
                       itemCount: result.length,
                     ),
                   );
+                } else if (state is SearchMovieEmpty) {
+                  return Center(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 200),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, bottom: 10),
+                          child: Text(
+                            'No Result',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Text(
+                            'Sorry, there no results for this search,\n please try another phase',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
                 } else if (state is SearchMovieError) {
-                  return Expanded(child: Center(child: Text(state.message)));
+                  return Expanded(
+                    child: Center(
+                      child: Text(key: Key('error_message'), state.message),
+                    ),
+                  );
                 } else {
                   return Expanded(child: Container());
                 }

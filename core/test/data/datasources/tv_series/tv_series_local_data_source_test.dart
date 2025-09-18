@@ -30,7 +30,7 @@ void main() {
           testTvSeriesTable,
         );
         // assert
-        expect(result, 'Added to Watchlist Tv Series');
+        expect(result, 'Added to Watchlist');
       },
     );
 
@@ -62,7 +62,7 @@ void main() {
           testTvSeriesTable,
         );
         // assert
-        expect(result, 'Removed from Watchlist Tv Series');
+        expect(result, 'Removed from Watchlist');
       },
     );
 

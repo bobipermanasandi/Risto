@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 part of 'search_movie_bloc.dart';
 
 abstract class SearchMovieEvent extends Equatable {

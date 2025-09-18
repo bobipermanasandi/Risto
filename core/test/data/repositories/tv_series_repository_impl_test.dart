@@ -431,11 +431,11 @@ void main() {
       // arrange
       when(
         mockLocalDataSource.insertWatchlistTvSeries(testTvSeriesTable),
-      ).thenAnswer((_) async => 'Added to Watchlist Tv Series');
+      ).thenAnswer((_) async => 'Added to Watchlist');
       // act
       final result = await repository.saveWatchlistTvSeries(tTvSeriesDetail);
       // assert
-      expect(result, const Right('Added to Watchlist Tv Series'));
+      expect(result, const Right('Added to Watchlist'));
     });
     test('should return DatabaseFailure when saving unsuccessful', () async {
       // arrange

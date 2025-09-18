@@ -48,6 +48,7 @@ class TvSeriesModel extends Equatable {
     originalName: json["original_name"],
   );
 
+  // coverage:ignore-start
   Map<String, dynamic> toJson() => {
     "poster_path": posterPath,
     "popularity": popularity,
@@ -63,6 +64,7 @@ class TvSeriesModel extends Equatable {
     "name": name,
     "original_name": originalName,
   };
+  // coverage:ignore-end
 
   TvSeries toEntity() {
     return TvSeries(

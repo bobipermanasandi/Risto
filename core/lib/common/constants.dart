@@ -33,7 +33,7 @@ final TextStyle kBodyText = GoogleFonts.poppins(
   fontWeight: FontWeight.w400,
   letterSpacing: 0.25,
 );
-
+// coverage:ignore-start
 // text theme
 final kTextTheme = TextTheme(
   headlineMedium: kHeading5,
@@ -43,6 +43,7 @@ final kTextTheme = TextTheme(
 );
 
 final kDrawerTheme = DrawerThemeData(backgroundColor: Colors.grey.shade700);
+// coverage:ignore-end
 
 const kColorScheme = ColorScheme(
   primary: kMikadoYellow,

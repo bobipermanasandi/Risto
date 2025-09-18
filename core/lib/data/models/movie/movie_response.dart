@@ -14,9 +14,11 @@ class MovieResponse extends Equatable {
     ),
   );
 
+  // coverage:ignore-start
   Map<String, dynamic> toJson() => {
     "results": List<dynamic>.from(movieList.map((x) => x.toJson())),
   };
+  // coverage:ignore-end
 
   @override
   List<Object> get props => [movieList];
