@@ -2,7 +2,7 @@
 
 <img src="capture/cover.png"/><br />
 
-[![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md)[![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md) [![Codemagic build status](https://api.codemagic.io/apps/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/status_badge.svg)]([README_EN.md](https://codemagic.io/app/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/latest_build))
+[![English](https://img.shields.io/badge/English-README_EN.md-blue)](README_EN.md)[![Indonesia](https://img.shields.io/badge/Indonesia-README.md-green)](README.md)
 
 
 **Risto** is a movie and TV series catalog application built with Flutter. It offers a clean and responsive user interface that allows users to:
@@ -123,7 +123,9 @@ lib/
 
 ## 🧪 Testing
 
-This application has comprehensive testing coverage:
+ [![Codemagic build status](https://api.codemagic.io/apps/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/status_badge.svg)]([README_EN.md](https://codemagic.io/app/68c9aea497fe1c526b443cc5/68c9aea497fe1c526b443cc4/latest_build))<br />
+
+This application has comprehensive testing coverage (Core & Search):
 
 ### Running Tests
 ```bash
@@ -145,6 +147,24 @@ After running tests with coverage, open the HTML file at:
 ```bash
 open coverage/html/index.html
 ```
+
+<details>
+<summary>Click to view application screenshots</summary>
+
+### Core Movie & TV Series
+<img src="capture/core_coverage_report.png" alt="Core Movie & TV Series"/>
+
+### Search Movie & TV Series
+<img src="capture/search_coverage_report.png" alt="Search Movie & TV Series"/>
+
+### Analytics
+<img src="capture/analytics.png" alt="Analytics"/>
+
+### Crashlytics
+<img src="capture/crashlytics.png" alt="Crashlytics"/>
+
+</details>
+
 
 ### Testing Structure
 - **Unit Tests** - Testing for data sources, repositories, and use cases
@@ -209,25 +229,6 @@ lib/
 - **Lazy Loading** - Implementing lazy loading for long lists
 - **Local Storage** - Watchlist stored locally for offline access
 - **Error Handling** - Comprehensive error handling with user-friendly messages
-
-## 📱 Coverage & Firebase Report 
-
-<details>
-<summary>Click to view application screenshots</summary>
-
-### Core Movie & TV Series
-<img src="capture/core_coverage_report.png" alt="Core Movie & TV Series"/>
-
-### Search Movie & TV Series
-<img src="capture/search_coverage_report.png" alt="Search Movie & TV Series"/>
-
-### Analytics
-<img src="capture/analytics.png" alt="Analytics"/>
-
-### Crashlytics
-<img src="capture/crashlytics.png" alt="Crashlytics"/>
-
-</details>
 
 ## 🤝 Contributing
 
