@@ -61,9 +61,6 @@ Dirancang untuk memberikan pengalaman pengguna yang mulus, **Risto** cocok bagi 
 ### Search
 <img src="capture/06. search.png" alt="Search" width="300"/>
 
-### About
-<img src="capture/07. about.png" alt="About" width="300"/>
-
 </details>
 
 ## 🏗️ Arsitektur
